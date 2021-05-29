@@ -1,38 +1,38 @@
 {
-    "root": true,
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
-    },
-    "extends": [
-        "plugin:vue/vue3-essential",
-        "eslint:recommended",
-        "@vue/typescript/recommended",
-        "@vue/prettier",
-        "@vue/prettier/@typescript-eslint"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 2021,
-        "sourceType": "module",
-        "parser": "@typescript-eslint/parser"
-    },
-    "plugins": [
-    ],
-    "rules": {},
-    "overrides": [
-        {
-            "files": [
-                "*.vue",
-                "**/__tests__/*.{j,t}s?(x)",
-                "**/tests/unit/**/*.spec.{j,t}s?(x)"
-            ],
-            "rules": {
-                "indent": "off"
-            },
-            "env": {
-                "jest": true
-            }
-        }
-    ]
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    // 他のルールの下に追加
+    "@vue/prettier",
+    "@vue/prettier/@typescript-eslint"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "parser": "@typescript-eslint/parser"
+  },
+  "plugins": [],
+  "rules": {},
+  "overrides": [
+    {
+      "files": [
+        "*.vue",
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "rules": {
+        "indent": "off"
+      },
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
