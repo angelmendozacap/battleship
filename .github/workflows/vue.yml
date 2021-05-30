@@ -1,0 +1,57 @@
+name: VUE
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+env:
+  node_version: 14.x
+
+jobs:
+  install_dependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.node_version }}
+
+      - name: Cache Node Modules
+        id: npm-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.node_version }}
+
+      - id: npm-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npmW
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Run linting
+        run: npm run lint:script
