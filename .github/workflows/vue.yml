@@ -28,7 +28,6 @@ jobs:
         with:
           path: ~/.npm
           key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
 
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -49,7 +48,6 @@ jobs:
         with:
           path: ~/.npm
           key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
 
       - if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
