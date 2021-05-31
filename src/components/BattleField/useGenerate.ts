@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Ref, ref } from "@vue/reactivity";
 import { Cell } from "@/types/Cell";
-import { computed, onMounted } from "@vue/runtime-core";
+import { onMounted } from "@vue/runtime-core";
 import { shipTypes } from "@/data/shipTypes";
 import { Ship } from "@/types/Ship";
 
