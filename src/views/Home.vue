@@ -1,13 +1,12 @@
 <template>
-  <div class="text-gray-500">
-    <router-view></router-view>
-  </div>
+  <h1>Home</h1>
+  <router-link :to="{ name: 'Config' }">Start Game</router-link>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "App",
+  name: "Home",
 });
 </script>
