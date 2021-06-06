@@ -4,6 +4,7 @@ import { Cell } from "@/types/Cell";
 import { onMounted } from "@vue/runtime-core";
 import { shipTypes } from "@/data/shipTypes";
 import { Ship } from "@/types/Ship";
+import { useConfig } from "@/store/config";
 
 export function useGenerate() {
   const boardSize = ref(10);
@@ -51,7 +52,10 @@ export function useGenerate() {
   }
 
   function setCellAttacked(index: number) {
-    console.log(index);
+    const { setAttempts, config } = useConfig();
+    const leftAttempts = config.numberOfAttempts - 1;
+    setAttempts(leftAttempts);
+    console.log(index, config.numberOfAttempts);
 
     const cell = cells.value[index];
     const { taken } = cell;

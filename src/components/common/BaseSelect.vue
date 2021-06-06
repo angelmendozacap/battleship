@@ -36,10 +36,10 @@
     <option
       v-for="option in options"
       :key="option"
-      :value="option"
-      :selected="option === modelValue"
+      :value="option.value"
+      :selected="option.value === modelValue"
     >
-      {{ option }}
+      {{ option.description }}
     </option>
   </select>
   <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
@@ -47,19 +47,27 @@
   </BaseErrorMessage>
 </template>
 
-<script>
+<script lang="ts">
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { defineComponent, PropType } from "vue";
+
 import setupFormComponent from "@/features/setupFormComponent";
 import uniqueID from "@/features/uniqueID";
 import BaseErrorMessage from "@/components/common/BaseErrorMessage.vue";
-export default {
+
+interface Option {
+  value: unknown;
+  description: string;
+}
+
+export default defineComponent({
   name: "BaseSelect",
   components: {
     BaseErrorMessage,
   },
   props: {
     options: {
-      type: Array,
+      type: Object as PropType<Option[]>,
       required: true,
     },
     label: {
@@ -83,5 +91,5 @@ export default {
       uuid,
     };
   },
-};
+});
 </script>

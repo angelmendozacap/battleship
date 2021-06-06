@@ -1,7 +1,7 @@
 import * as VueRouter from "vue-router";
 
 const Home = () => import("../views/Home.vue");
-const Config = () => import("../views/Config.vue");
+const Config = () => import("../views/Config/index.vue");
 const BattleshipBoard = () => import("../views/BattleshipBoard.vue");
 
 const routes: VueRouter.RouteRecordRaw[] = [

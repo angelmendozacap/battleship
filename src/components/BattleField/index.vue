@@ -11,12 +11,14 @@
       />
     </div>
   </div>
+  <p>{{ config.numberOfAttempts }}</p>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useGenerate } from "./useGenerate";
 import Cell from "@/components/Cell.vue";
+import { useConfig } from "@/store/config";
 
 export default defineComponent({
   name: "BattleField",
@@ -25,8 +27,10 @@ export default defineComponent({
   },
   setup() {
     const { cells: computerCells, setCellAttacked } = useGenerate();
+    const { config } = useConfig();
 
     return {
+      config,
       computerCells,
       setCellAttacked,
     };

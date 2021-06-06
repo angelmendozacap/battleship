@@ -52,12 +52,13 @@
   </BaseErrorMessage>
 </template>
 
-<script>
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+<script lang="ts">
+import { defineComponent } from "@vue/runtime-core";
 import setupFormComponent from "@/features/setupFormComponent";
 import uniqueID from "@/features/uniqueID";
 import BaseErrorMessage from "@/components/common/BaseErrorMessage.vue";
-export default {
+
+export default defineComponent({
   name: "BaseInput",
   components: {
     BaseErrorMessage,
@@ -84,7 +85,7 @@ export default {
       uuid,
     };
   },
-};
+});
 </script>
 
 <style lang="postcss" scoped>
