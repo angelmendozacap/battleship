@@ -1,0 +1,1 @@
+import{d as a,e,o as n,c as o,a as r,i as t,j as s}from"./vendor.4873629a.js";var l=a({name:"Home"});const m=r("h1",null,"Home",-1),u=s("Start Game");l.render=function(a,s,l,d,i,f){const c=e("router-link");return n(),o("div",null,[m,r(c,{to:{name:"Config"}},{default:t((()=>[u])),_:1})])};export default l;
