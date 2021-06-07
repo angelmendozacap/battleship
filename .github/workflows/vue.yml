@@ -77,9 +77,9 @@ jobs:
         run: npm run build
 
       - name: CNAME
-        run: cd ./dist
-        run: echo 'battleship.alfredomen.com' > CNAME
-
+        run: |
+          cd ./dist
+          echo 'battleship.alfredomen.com' > CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
