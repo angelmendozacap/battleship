@@ -3,7 +3,7 @@ import { Ref, ref } from "@vue/reactivity";
 import { Cell } from "@/types/Cell";
 import { computed, onMounted } from "@vue/runtime-core";
 import { shipTypes } from "@/data/shipTypes";
-import { Directions, Ship } from "@/types/Ship";
+import { Directions, Ship, ShipNames } from "@/types/Ship";
 import { useConfig } from "@/store/config";
 import { useGame } from "@/store/game";
 
@@ -78,10 +78,10 @@ export function useBattleField() {
     setAttempts(leftAttempts);
     if (config.numberOfAttempts > 0) {
       if (taken) {
-        if (shipName === "destroyer") destroyerCount.value++;
-        if (shipName === "submarine") submarineCount.value++;
-        if (shipName === "cruiser") cruiserCount.value++;
-        if (shipName === "battleshipCount") battleshipCount.value++;
+        if (shipName === ShipNames.DESTROYER) destroyerCount.value++;
+        if (shipName === ShipNames.SUBMARINE) submarineCount.value++;
+        if (shipName === ShipNames.CRUISER) cruiserCount.value++;
+        if (shipName === ShipNames.BATTLESHIP) battleshipCount.value++;
 
         cell.boom = true;
       } else {
@@ -95,23 +95,28 @@ export function useBattleField() {
   }
 
   function checkForWins() {
+    const sunkScore = 10;
+
     shipArray.value.forEach((ship) => {
       const { name, size, count } = ship;
       const totalValue = size * count;
-      if (name === "destroyer" && destroyerCount.value === totalValue) {
-        destroyerCount.value = 10;
+      if (name === ShipNames.DESTROYER && destroyerCount.value === totalValue) {
+        destroyerCount.value = sunkScore;
         addSunkenShip(ship);
       }
-      if (name === "submarine" && submarineCount.value === totalValue) {
-        submarineCount.value = 10;
+      if (name === ShipNames.SUBMARINE && submarineCount.value === totalValue) {
+        submarineCount.value = sunkScore;
         addSunkenShip(ship);
       }
-      if (name === "cruiser" && cruiserCount.value === totalValue) {
-        cruiserCount.value = 10;
+      if (name === ShipNames.CRUISER && cruiserCount.value === totalValue) {
+        cruiserCount.value = sunkScore;
         addSunkenShip(ship);
       }
-      if (name === "battleshipCount" && battleshipCount.value === totalValue) {
-        battleshipCount.value = 10;
+      if (
+        name === ShipNames.BATTLESHIP &&
+        battleshipCount.value === totalValue
+      ) {
+        battleshipCount.value = sunkScore;
         addSunkenShip(ship);
       }
     });
@@ -121,7 +126,7 @@ export function useBattleField() {
         submarineCount.value +
         cruiserCount.value +
         battleshipCount.value ===
-      40
+      sunkScore * 4
     ) {
       gameOver(true);
     }

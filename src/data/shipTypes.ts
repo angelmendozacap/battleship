@@ -1,9 +1,9 @@
-import { Ship } from "../types/Ship";
+import { Ship, ShipNames } from "../types/Ship";
 
 export const shipTypes = (width: number): Ship[] => [
   {
     id: 1,
-    name: "destroyer",
+    name: ShipNames.DESTROYER,
     size: 1,
     directions: {
       horizontal: [0],
@@ -13,7 +13,7 @@ export const shipTypes = (width: number): Ship[] => [
   },
   {
     id: 2,
-    name: "submarine",
+    name: ShipNames.SUBMARINE,
     size: 2,
     directions: {
       horizontal: [0, 1],
@@ -23,7 +23,7 @@ export const shipTypes = (width: number): Ship[] => [
   },
   {
     id: 3,
-    name: "cruiser",
+    name: ShipNames.CRUISER,
     size: 3,
     directions: {
       horizontal: [0, 1, 2],
@@ -33,7 +33,7 @@ export const shipTypes = (width: number): Ship[] => [
   },
   {
     id: 4,
-    name: "battleship",
+    name: ShipNames.BATTLESHIP,
     size: 4,
     directions: {
       horizontal: [0, 1, 2, 3],

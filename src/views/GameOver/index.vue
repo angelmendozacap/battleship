@@ -1,6 +1,14 @@
 <template>
   <div>
     <h1>Juego terminado</h1>
+    <p v-if="game.win">
+      Ganaste 🥳
+      <span>Hundiste todas las naves</span>
+    </p>
+    <p v-else>
+      Perdiste 😢
+      <span>Casi hundes todas las naves</span>
+    </p>
     <button @click="tryAgain">Intentar de nuevo</button>
   </div>
 </template>
@@ -15,7 +23,7 @@ export default defineComponent({
   name: "GameOver",
   setup() {
     const router = useRouter();
-    const { resetGame } = useGame();
+    const { resetGame, game } = useGame();
     const { setAttempts } = useConfig();
 
     function tryAgain() {
@@ -26,6 +34,7 @@ export default defineComponent({
     }
 
     return {
+      game,
       tryAgain,
     };
   },
