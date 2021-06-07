@@ -54,8 +54,8 @@ jobs:
       - name: Run linting
         run: npm run lint:script
 
-  deploy:
-    name: Deploy 🚀
+  build:
+    name: Build 🚀
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -80,8 +80,26 @@ jobs:
         run: |
           cd ./dist
           echo 'battleship.alfredomen.com' > CNAME
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
 
-      - name: Deploy
+  deploy:
+    name: Deploy 🚀
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
