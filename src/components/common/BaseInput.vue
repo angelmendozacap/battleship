@@ -2,7 +2,7 @@
   <label
     v-if="label"
     class="block text-sm font-medium text-gray-700"
-    :for="uuid"
+    :for="uuid.toString()"
   >
     {{ label }}
   </label>
@@ -12,11 +12,11 @@
         ...$attrs,
         onInput: updateValue,
       }"
-      :id="uuid"
+      :id="uuid.toString()"
       class="input"
       :value="modelValue"
       :placeholder="placeholder"
-      :aria-describedby="error ? `${uuid}-error` : null"
+      :aria-describedby="error ? `${uuid}-error` : undefined"
       :aria-invalid="error ? true : false"
       :class="[!!error ? 'invalid' : 'valid']"
     />

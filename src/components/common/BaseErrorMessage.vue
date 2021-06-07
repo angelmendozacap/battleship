@@ -4,14 +4,16 @@
   </p>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "@vue/runtime-core";
+
+export default defineComponent({
   name: "BaseErrorMessage",
   props: {
     id: {
-      type: [String, Number],
+      type: String,
       required: true,
     },
   },
-};
+});
 </script>

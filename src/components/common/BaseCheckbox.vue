@@ -2,7 +2,7 @@
   <div class="flex items-center">
     <input
       v-bind="{ ...$attrs, onChange: updateValue }"
-      :id="uuid"
+      :id="uuid.toString()"
       :checked="modelValue"
       type="checkbox"
       class="
@@ -14,7 +14,11 @@
         rounded
       "
     />
-    <label v-if="label" :for="uuid" class="ml-2 block text-sm text-gray-900">
+    <label
+      v-if="label"
+      :for="uuid.toString()"
+      class="ml-2 block text-sm text-gray-900"
+    >
       {{ label }}
     </label>
   </div>

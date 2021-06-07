@@ -2,7 +2,7 @@
   <label
     v-if="label"
     class="block text-sm font-medium text-gray-700"
-    :for="uuid"
+    :for="uuid.toString()"
   >
     {{ label }}
   </label>
@@ -11,7 +11,7 @@
       ...$attrs,
       onChange: updateValue,
     }"
-    :id="uuid"
+    :id="uuid.toString()"
     class="
       mt-1
       block
@@ -28,13 +28,13 @@
       rounded-md
     "
     :value="modelValue"
-    :aria-describedby="error ? `${uuid}-error` : null"
+    :aria-describedby="error ? `${uuid}-error` : undefined"
     :aria-invalid="error ? true : false"
     :class="{ error }"
   >
     <option
       v-for="option in options"
-      :key="option"
+      :key="option.value"
       :value="option.value"
       :selected="option.value === modelValue"
     >
@@ -55,7 +55,7 @@ import uniqueID from "@/features/uniqueID";
 import BaseErrorMessage from "@/components/common/BaseErrorMessage.vue";
 
 interface Option {
-  value: unknown;
+  value: string | number | undefined;
   description: string;
 }
 
@@ -66,7 +66,7 @@ export default defineComponent({
   },
   props: {
     options: {
-      type: Object as PropType<Option[]>,
+      type: Object as PropType<readonly Option[]>,
       required: true,
     },
     label: {
