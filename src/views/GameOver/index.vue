@@ -10,6 +10,7 @@
       <span>Casi hundes todas las naves</span>
     </p>
     <button @click="tryAgain">Intentar de nuevo</button>
+    <router-link :to="{ name: 'GameHistory' }">Historial de juegos</router-link>
   </div>
 </template>
 

@@ -13,8 +13,8 @@ export function useConfig() {
 
   const defaultAttemptsOptions = computed(() => [
     { value: Infinity, description: "Fácil (turnos infinitos)" },
-    { value: 100, description: "Medio (turnos infinitos)" },
-    { value: 50, description: "Difícil (turnos infinitos)" },
+    { value: 100, description: "Medio (100 turnos)" },
+    { value: 50, description: "Difícil (50 turnos)" },
   ]);
 
   return readonly({

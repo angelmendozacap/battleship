@@ -1,9 +1,9 @@
-import { Ship } from "./Ship";
+import { ShipNames } from "./Ship";
 
 export default interface Game {
   numberOfAttempts: number;
   numberOfAttemptsUsed: number;
-  sunkenShips: Ship[];
+  sunkenShipFleet: ShipNames[];
   win: boolean;
   over: boolean;
 }

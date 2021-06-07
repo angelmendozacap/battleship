@@ -1,6 +1,6 @@
 export interface Ship {
   id: number;
-  name: string;
+  name: ShipNames;
   directions: Directions;
   count: number;
   size: number;

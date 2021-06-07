@@ -4,6 +4,7 @@ const Home = () => import("../views/Home/index.vue");
 const Config = () => import("../views/Config/index.vue");
 const BattleshipBoard = () => import("../views/BattleshipBoard/index.vue");
 const GameOver = () => import("../views/GameOver/index.vue");
+const GameHistory = () => import("../views/GameHistory/index.vue");
 
 const routes: VueRouter.RouteRecordRaw[] = [
   {
@@ -25,6 +26,11 @@ const routes: VueRouter.RouteRecordRaw[] = [
     name: "GameOver",
     path: "/gameover",
     component: GameOver,
+  },
+  {
+    name: "GameHistory",
+    path: "/game-history",
+    component: GameHistory,
   },
 ];
 

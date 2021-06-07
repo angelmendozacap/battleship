@@ -101,23 +101,23 @@ export function useBattleField() {
       const { name, size, count } = ship;
       const totalValue = size * count;
       if (name === ShipNames.DESTROYER && destroyerCount.value === totalValue) {
+        addSunkenShip(name);
         destroyerCount.value = sunkScore;
-        addSunkenShip(ship);
       }
       if (name === ShipNames.SUBMARINE && submarineCount.value === totalValue) {
         submarineCount.value = sunkScore;
-        addSunkenShip(ship);
+        addSunkenShip(name);
       }
       if (name === ShipNames.CRUISER && cruiserCount.value === totalValue) {
         cruiserCount.value = sunkScore;
-        addSunkenShip(ship);
+        addSunkenShip(name);
       }
       if (
         name === ShipNames.BATTLESHIP &&
         battleshipCount.value === totalValue
       ) {
         battleshipCount.value = sunkScore;
-        addSunkenShip(ship);
+        addSunkenShip(name);
       }
     });
 
