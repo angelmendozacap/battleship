@@ -11,7 +11,7 @@ env:
 
 jobs:
   install_dependencies:
-    name: Install Dependencies
+    name: Install Dependencies ➕
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
   lint:
-    name: Linting
+    name: Linting 🚨
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -55,7 +55,7 @@ jobs:
         run: npm run lint:script
 
   build:
-    name: Build 🚀
+    name: Build 👷‍♂️
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
