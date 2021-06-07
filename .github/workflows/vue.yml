@@ -53,3 +53,31 @@ jobs:
         run: npm ci
       - name: Run linting
         run: npm run lint:script
+
+  deploy 🚀:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.node_version }}
+
+      - id: npm-cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
