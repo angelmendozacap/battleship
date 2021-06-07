@@ -32,7 +32,6 @@
     :aria-invalid="error ? true : false"
     :class="{ error }"
   >
-    <option selected disabled>Select</option>
     <option
       v-for="option in options"
       :key="option"

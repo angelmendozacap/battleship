@@ -11,14 +11,15 @@
       />
     </div>
   </div>
-  <p>{{ config.numberOfAttempts }}</p>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useGenerate } from "./useGenerate";
+import { defineComponent, watchEffect } from "vue";
+import { useRouter } from "vue-router";
+import { useBattleField } from "./useBattleField";
 import Cell from "@/components/Cell.vue";
 import { useConfig } from "@/store/config";
+import { useGame } from "@/store/game";
 
 export default defineComponent({
   name: "BattleField",
@@ -26,8 +27,13 @@ export default defineComponent({
     Cell,
   },
   setup() {
-    const { cells: computerCells, setCellAttacked } = useGenerate();
+    const router = useRouter();
+    const { cells: computerCells, setCellAttacked } = useBattleField();
     const { config } = useConfig();
+    const { game } = useGame();
+    watchEffect(() => {
+      if (game.over) router.push({ name: "GameOver" });
+    });
 
     return {
       config,

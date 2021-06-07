@@ -15,7 +15,7 @@
       :id="uuid"
       class="input"
       :value="modelValue"
-      :placeholder="label"
+      :placeholder="placeholder"
       :aria-describedby="error ? `${uuid}-error` : null"
       :aria-invalid="error ? true : false"
       :class="[!!error ? 'invalid' : 'valid']"
@@ -74,6 +74,10 @@ export default defineComponent({
     },
     modelValue: {
       type: [String, Number],
+      default: "",
+    },
+    placeholder: {
+      type: String,
       default: "",
     },
   },

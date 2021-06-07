@@ -4,34 +4,41 @@ export const shipTypes = (width: number): Ship[] => [
   {
     id: 1,
     name: "destroyer",
-    directions: [[0], [0]],
+    size: 1,
+    directions: {
+      horizontal: [0],
+      vertical: [0],
+    },
     count: 4,
   },
   {
     id: 2,
     name: "submarine",
-    directions: [
-      [0, 1],
-      [0, width],
-    ],
+    size: 2,
+    directions: {
+      horizontal: [0, 1],
+      vertical: [0, width],
+    },
     count: 3,
   },
   {
     id: 3,
     name: "cruiser",
-    directions: [
-      [0, 1, 2],
-      [0, width, width * 2],
-    ],
+    size: 3,
+    directions: {
+      horizontal: [0, 1, 2],
+      vertical: [0, width, width * 2],
+    },
     count: 2,
   },
   {
     id: 4,
     name: "battleship",
-    directions: [
-      [0, 1, 2, 3],
-      [0, width, width * 2, width * 3],
-    ],
+    size: 4,
+    directions: {
+      horizontal: [0, 1, 2, 3],
+      vertical: [0, width, width * 2, width * 3],
+    },
     count: 1,
   },
 ];

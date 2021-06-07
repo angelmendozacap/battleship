@@ -4,16 +4,11 @@ import { computed, reactive, readonly } from "vue";
 
 const config: Config = reactive({
   numberOfAttempts: 0,
-  preferAttempts: false,
 });
 
 export function useConfig() {
   function setAttempts(attempts: number) {
     config.numberOfAttempts = Number(attempts);
-  }
-
-  function setPreferAttempts(prefer: boolean) {
-    config.preferAttempts = prefer;
   }
 
   const defaultAttemptsOptions = computed(() => [
@@ -25,7 +20,6 @@ export function useConfig() {
   return readonly({
     config,
     setAttempts,
-    setPreferAttempts,
     defaultAttemptsOptions,
   });
 }

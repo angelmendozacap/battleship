@@ -1,8 +1,9 @@
 import * as VueRouter from "vue-router";
 
-const Home = () => import("../views/Home.vue");
+const Home = () => import("../views/Home/index.vue");
 const Config = () => import("../views/Config/index.vue");
-const BattleshipBoard = () => import("../views/BattleshipBoard.vue");
+const BattleshipBoard = () => import("../views/BattleshipBoard/index.vue");
+const GameOver = () => import("../views/GameOver/index.vue");
 
 const routes: VueRouter.RouteRecordRaw[] = [
   {
@@ -19,6 +20,11 @@ const routes: VueRouter.RouteRecordRaw[] = [
     name: "BattleshipBoard",
     path: "/battleship",
     component: BattleshipBoard,
+  },
+  {
+    name: "GameOver",
+    path: "/gameover",
+    component: GameOver,
   },
 ];
 
