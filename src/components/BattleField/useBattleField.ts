@@ -14,8 +14,8 @@ export function useBattleField() {
   const {
     saveGameHistory,
     addSunkenShip,
-    setNumberOfAttempts,
-    setNumberOfAttemptsUsed,
+    setTotalAttempts,
+    setAttemptsRemaining,
     setWin,
     setGameOver,
   } = useGame();
@@ -135,7 +135,7 @@ export function useBattleField() {
   function gameOver(win: boolean) {
     setGameOver(true);
     setWin(win);
-    setNumberOfAttemptsUsed(config.numberOfAttempts);
+    setAttemptsRemaining(config.numberOfAttempts);
     saveGameHistory();
   }
 
@@ -147,7 +147,7 @@ export function useBattleField() {
       }
     });
 
-    setNumberOfAttempts(config.numberOfAttempts);
+    setTotalAttempts(config.numberOfAttempts);
   });
 
   return {

@@ -4,20 +4,20 @@ import { ShipNames } from "@/types/Ship";
 import { computed, ComputedRef, readonly, reactive } from "vue";
 
 const game: Game = reactive({
-  numberOfAttempts: 0,
-  numberOfAttemptsUsed: 0,
+  totalAttempts: 0,
+  attemptsRemaining: 0,
   sunkenShipFleet: [],
   win: false,
   over: false,
 });
 
 export function useGame() {
-  function setNumberOfAttempts(value: number) {
-    game.numberOfAttempts = value;
+  function setTotalAttempts(value: number) {
+    game.totalAttempts = value;
   }
 
-  function setNumberOfAttemptsUsed(value: number) {
-    game.numberOfAttemptsUsed = value;
+  function setAttemptsRemaining(value: number) {
+    game.attemptsRemaining = value;
   }
 
   function setWin(value: boolean) {
@@ -40,8 +40,8 @@ export function useGame() {
   }
 
   function resetGame() {
-    game.numberOfAttempts = 0;
-    game.numberOfAttemptsUsed = 0;
+    game.totalAttempts = 0;
+    game.attemptsRemaining = 0;
     game.sunkenShipFleet = [];
     game.win = false;
     game.over = false;
@@ -58,8 +58,8 @@ export function useGame() {
     addSunkenShip,
     gameHistory,
     saveGameHistory,
-    setNumberOfAttempts,
-    setNumberOfAttemptsUsed,
+    setTotalAttempts,
+    setAttemptsRemaining,
     setWin,
     setGameOver,
     resetGame,
