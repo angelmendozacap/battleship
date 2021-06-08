@@ -4,7 +4,6 @@
       <Cell
         v-for="(cell, index) in computerCells"
         :key="index"
-        class="border-board"
         :cell="cell"
         :cell-index="index"
         @attack="setCellAttacked"
@@ -17,7 +16,7 @@
 import { defineComponent, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 import { useBattleField } from "./useBattleField";
-import Cell from "@/components/Cell.vue";
+import Cell from "./Cell.vue";
 import { useConfig } from "@/store/config";
 import { useGame } from "@/store/game";
 
@@ -60,6 +59,7 @@ export default defineComponent({
   background-position: -10% 30%, 40% -10%, 110% 70%, 10% 100%, 85% 20%, 30% 50%,
     70% 85%;
 }
+
 .border-board {
   @apply border border-blue-400 border-opacity-80;
 }
