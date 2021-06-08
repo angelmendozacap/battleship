@@ -1,7 +1,7 @@
 <template>
   <label
     v-if="label"
-    class="block text-sm font-medium text-gray-700"
+    class="block text-sm font-medium mb-1"
     :for="uuid.toString()"
   >
     {{ label }}
@@ -22,15 +22,16 @@
       text-base
       border-gray-300
       focus:outline-none
-      focus:ring-indigo-500
-      focus:border-indigo-500
+      focus:ring-green-300
+      focus:border-green-300
       sm:text-sm
       rounded-md
+      bg-gray-800
     "
     :value="modelValue"
     :aria-describedby="error ? `${uuid}-error` : undefined"
     :aria-invalid="error ? true : false"
-    :class="{ error }"
+    :class="{ error, 'mb-4': !error }"
   >
     <option
       v-for="option in options"

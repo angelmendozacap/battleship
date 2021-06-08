@@ -1,12 +1,12 @@
 <template>
   <label
     v-if="label"
-    class="block text-sm font-medium text-gray-700"
+    class="block text-sm font-medium mb-1"
     :for="uuid.toString()"
   >
     {{ label }}
   </label>
-  <div class="mt-1 relative rounded-md shadow-sm">
+  <div class="mt-1 relative rounded-md shadow-sm" :class="{ 'mb-4': !error }">
     <input
       v-bind="{
         ...$attrs,
@@ -97,14 +97,14 @@ export default defineComponent({
 }
 
 .input {
-  @apply block w-full rounded-md;
+  @apply block w-full rounded-md bg-gray-800;
 }
 
 .input.valid {
-  @apply focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300;
+  @apply focus:ring-green-300 focus:border-green-300 sm:text-sm border-gray-300;
 }
 
 .input.invalid {
-  @apply border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm pr-10;
+  @apply border-red-300 text-red-500 placeholder-red-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm pr-10;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <p :id="id" aria-live="assertive" class="mt-2 text-sm text-red-600">
+  <p :id="id" aria-live="assertive" class="mt-2 mb-6 text-sm text-red-500">
     <slot />
   </p>
 </template>

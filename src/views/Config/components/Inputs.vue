@@ -1,20 +1,23 @@
 <template>
-  <BaseCheckbox v-model="arePreferredAttempts" label="Niveles predefinidos" />
   <BaseSelect
-    v-if="arePreferredAttempts"
+    v-if="!arePreferredAttempts"
     v-model="preferredAttempts"
-    label="Niveles predefinidos"
+    label="Elige un nivel"
     :options="defaultAttemptsOptions"
   />
   <BaseInput
     v-else
     v-model="preferredAttempts"
-    label="Número de intentos personalizado"
+    label="Ingresa el número de intentos"
     :error="validateNumber(preferredAttempts)"
     type="number"
     min="1"
   />
-  <div>{{ typeof config.numberOfAttempts }} {{ config.numberOfAttempts }}</div>
+  <BaseCheckbox
+    v-model="arePreferredAttempts"
+    :label="arePreferredAttempts ? 'Personalizado' : 'Predefinidos'"
+  />
+  <!-- <div>{{ typeof config.numberOfAttempts }} {{ config.numberOfAttempts }}</div> -->
 </template>
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 <template>
-  <div class="text-gray-500">
+  <div class="bg-gray-900 min-h-screen text-gray-300 overflow-hidden">
     <router-view v-slot="{ Component }">
-      <transition name="bounce">
+      <transition name="bounce" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>
