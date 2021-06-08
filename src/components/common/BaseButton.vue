@@ -1,5 +1,5 @@
 <template>
-  <router-link
+  <button
     class="
       text-center
       w-full
@@ -17,30 +17,23 @@
       md:px-10
     "
     :class="colorStyles"
-    :to="to"
   >
     <slot />
-  </router-link>
+  </button>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from "vue";
-import { useRouter, RouteLocationRaw } from "vue-router";
+import { computed, defineComponent } from "vue";
 
 export default defineComponent({
-  name: "BaseButtonLink",
+  name: "BaseButton",
   props: {
-    to: {
-      type: Object as PropType<RouteLocationRaw>,
-      required: true,
-    },
     color: {
       type: String,
       default: "primary",
     },
   },
   setup(props) {
-    const router = useRouter();
     const colorStyles = computed(() => {
       return {
         "text-gray-900 bg-green-300 hover:bg-green-400":
@@ -51,7 +44,6 @@ export default defineComponent({
     });
 
     return {
-      router,
       colorStyles,
     };
   },
