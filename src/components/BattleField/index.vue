@@ -45,10 +45,11 @@ export default defineComponent({
 
 <style lang="postcss" scoped>
 .battleship-grid {
+  --board-size: 8.5vmin;
   @apply grid bg-blue-100;
   margin: 2vmin;
-  grid-template-rows: repeat(10, 8vmin);
-  grid-template-columns: repeat(10, 8vmin);
+  grid-template-rows: repeat(10, var(--board-size));
+  grid-template-columns: repeat(10, var(--board-size));
 
   background-image: url("@/assets/waves.svg"), url("@/assets/waves.svg"),
     url("@/assets/waves.svg"), url("@/assets/waves.svg"),
@@ -58,6 +59,12 @@ export default defineComponent({
   background-size: 10vmin;
   background-position: -10% 30%, 40% -10%, 110% 70%, 10% 100%, 85% 20%, 30% 50%,
     70% 85%;
+}
+
+@media (min-width: 640px) {
+  .battleship-grid {
+    --board-size: 8vmin;
+  }
 }
 
 .border-board {
