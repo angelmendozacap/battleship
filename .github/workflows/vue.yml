@@ -78,16 +78,16 @@ jobs:
         run: npm run coverage
 
       - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        files: ./clover.xml
-        directory: ./coverage/
-        flags: unittests
-        env_vars: OS,VUE
-        name: codecov-battleship-vue
-        fail_ci_if_error: true
-        path_to_write_report: ./coverage/codecov_report.txt
-        verbose: true
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./clover.xml
+          directory: ./coverage/
+          flags: unittests
+          env_vars: OS,VUE
+          name: codecov-battleship-vue
+          fail_ci_if_error: true
+          path_to_write_report: ./coverage/codecov_report.txt
+          verbose: true
 
   build:
     name: Build 👷‍♂️
