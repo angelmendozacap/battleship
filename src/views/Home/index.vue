@@ -32,6 +32,11 @@
           <div class="rounded-md shadow">
             <BaseButtonLink :to="{ name: 'Config' }">Comenzar</BaseButtonLink>
           </div>
+          <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+            <BaseButtonLink color="secondary" :to="{ name: 'GameHistory' }"
+              >Historial</BaseButtonLink
+            >
+          </div>
         </div>
       </div>
     </main>
