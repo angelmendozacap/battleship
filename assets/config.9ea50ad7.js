@@ -1,0 +1,1 @@
+import{x as t,y as e,k as n}from"./vendor.9e925689.js";const s=e({numberOfAttempts:0});function i(){const e=n((()=>[{value:1/0,description:"Fácil (turnos infinitos)"},{value:100,description:"Medio (100 turnos)"},{value:50,description:"Difícil (50 turnos)"}]));return t({config:s,setAttempts:function(t){s.numberOfAttempts=Number(t)},defaultAttemptsOptions:e})}export{i as u};
