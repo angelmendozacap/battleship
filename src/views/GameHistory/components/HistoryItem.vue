@@ -87,9 +87,7 @@
           </svg>
           <p v-if="history.sunkenShipFleet.length">
             Flotas Hundidas
-            <span class="text-white">{{
-              history.sunkenShipFleet.join(" | ").toUpperCase()
-            }}</span>
+            <span class="text-white">{{ sunkenShipFleetString }}</span>
           </p>
         </div>
       </div>
@@ -165,15 +163,27 @@
 
 <script lang="ts">
 import Game from "@/types/Game";
-import { defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "HistoryItem",
   props: {
     history: {
-      type: Object as PropType<Game>,
+      type: Object as PropType<Readonly<Game>>,
       required: true,
     },
+  },
+  setup(props) {
+    const sunkenShipFleetString = computed(() => {
+      const sunkenShipFleet = Array.from(
+        props.history.sunkenShipFleet.values()
+      );
+      return sunkenShipFleet.join(" | ").toUpperCase();
+    });
+
+    return {
+      sunkenShipFleetString,
+    };
   },
 });
 </script>

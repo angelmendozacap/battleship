@@ -49,6 +49,7 @@ import { useRouter } from "vue-router";
 import { useGame } from "@/store/game";
 import HistoryItem from "./components/HistoryItem.vue";
 import BaseButton from "@/components/common/BaseButton.vue";
+import Game from "@/types/Game";
 
 export default defineComponent({
   components: { HistoryItem, BaseButton },
@@ -57,7 +58,7 @@ export default defineComponent({
     const router = useRouter();
 
     return {
-      gameHistory,
+      gameHistory: gameHistory as readonly Game[],
       router,
     };
   },
