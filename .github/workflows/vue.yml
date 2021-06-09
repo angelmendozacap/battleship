@@ -80,7 +80,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          files: ./clover.xml
+          files: ./coverage/clover.xml
           directory: ./coverage/
           flags: unittests
           env_vars: OS,VUE
