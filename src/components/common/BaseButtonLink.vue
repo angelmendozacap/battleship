@@ -12,9 +12,7 @@
       text-base
       font-medium
       rounded-md
-      md:py-4
-      md:text-lg
-      md:px-10
+      md:py-4 md:text-lg md:px-10
     "
     :class="colorStyles"
     :to="to"

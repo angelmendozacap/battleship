@@ -21,9 +21,7 @@
       py-2
       text-base
       border-gray-300
-      focus:outline-none
-      focus:ring-green-300
-      focus:border-green-300
+      focus:outline-none focus:ring-green-300 focus:border-green-300
       sm:text-sm
       rounded-md
       bg-gray-800

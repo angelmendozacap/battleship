@@ -23,9 +23,7 @@
             mx-auto
             text-lg
             sm:text-xl
-            md:mt-5
-            md:text-2xl
-            md:max-w-3xl
+            md:mt-5 md:text-2xl md:max-w-3xl
           "
         >
           El clásico combate naval

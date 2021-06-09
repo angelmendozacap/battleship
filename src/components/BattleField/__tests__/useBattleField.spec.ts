@@ -1,7 +1,4 @@
 import { mount } from "@vue/test-utils";
-import BattleField from "../index.vue";
-import Cell from "../Cell.vue";
-import router from "@/router";
 import { useConfig } from "@/store/config";
 import { useBattleField } from "../useBattleField";
 
