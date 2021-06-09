@@ -3,17 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit -p tsconfig-build.json && vite build",
     "serve": "vite preview",
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
-    "prettier": "prettier -w -u ."
+    "prettier": "prettier -w -u .",
+    "test": "jest --verbose",
+    "coverage": "jest --verbose --coverage"
   },
   "dependencies": {
     "vue": "^3.0.5",
     "vue-router": "^4.0.8"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.1",
     "@tailwindcss/forms": "^0.3.3",
+    "@types/jest": "^26.0.23",
     "@types/node": "^15.6.1",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
@@ -21,19 +25,37 @@
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "@vue/test-utils": "^2.0.0-rc.6",
     "autoprefixer": "^10.2.6",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^26.0.0",
     "eslint": "^7.27.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
+    "jest": "^26.0.0",
     "postcss": "^8.3.0",
     "prettier": "^2.3.0",
     "tailwindcss": "^2.1.2",
+    "ts-jest": "^26.4.4",
     "typescript": "^4.1.3",
     "vite": "^2.3.4",
+    "vue-jest": "^5.0.0-alpha.10",
     "vue-tsc": "^0.0.24"
   },
   "lint-staged": {
     "*.{ts,vue}": "eslint --fix",
     "*": "prettier -w -u"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
   }
 }

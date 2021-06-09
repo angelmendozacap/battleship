@@ -20,7 +20,6 @@ export default defineComponent({
       required: true,
     },
   },
-  emits: { attack: (index: number) => index },
   setup(props, { emit }) {
     const handleAttack = () => {
       emit("attack", props.cellIndex);

@@ -17,7 +17,6 @@
     v-model="arePreferredAttempts"
     :label="arePreferredAttempts ? 'Personalizado' : 'Predefinidos'"
   />
-  <!-- <div>{{ typeof config.numberOfAttempts }} {{ config.numberOfAttempts }}</div> -->
 </template>
 
 <script lang="ts">
