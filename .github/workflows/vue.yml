@@ -55,8 +55,8 @@ jobs:
       - name: Run linting
         run: npm run lint:script
 
-  unit_test:
-    name: Unit Test ✅
+  unit_test_coverate:
+    name: Unit Test Coverage ✅
     needs: [install_dependencies]
     runs-on: ubuntu-latest
     steps:
@@ -76,6 +76,18 @@ jobs:
         run: npm ci
       - name: Run coverage
         run: npm run coverage
+
+      - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        files: ./clover.xml
+        directory: ./coverage/
+        flags: unittests
+        env_vars: OS,VUE
+        name: codecov-battleship-vue
+        fail_ci_if_error: true
+        path_to_write_report: ./coverage/codecov_report.txt
+        verbose: true
 
   build:
     name: Build 👷‍♂️
