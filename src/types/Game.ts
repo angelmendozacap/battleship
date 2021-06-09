@@ -6,4 +6,5 @@ export default interface Game {
   sunkenShipFleet: ShipNames[];
   win: boolean;
   over: boolean;
+  date: Date | string;
 }

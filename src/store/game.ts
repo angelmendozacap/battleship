@@ -9,6 +9,7 @@ const game: Game = reactive({
   sunkenShipFleet: [],
   win: false,
   over: false,
+  date: "",
 });
 
 export function useGame() {
@@ -34,6 +35,7 @@ export function useGame() {
 
   function saveGameHistory() {
     const history = gameHistory.value;
+    game.date = new Date();
     history.push(game);
 
     localStorage.setItem("_GAME_HISTORY", JSON.stringify(history));
@@ -45,6 +47,7 @@ export function useGame() {
     game.sunkenShipFleet = [];
     game.win = false;
     game.over = false;
+    game.date = "";
   }
 
   const gameHistory: ComputedRef<Game[]> = computed(() => {
