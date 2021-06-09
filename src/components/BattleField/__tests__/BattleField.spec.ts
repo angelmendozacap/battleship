@@ -16,8 +16,9 @@ describe("BattleField", () => {
 
     await wrapper.vm.$nextTick();
 
-    wrapper.findComponent(Cell).vm.$emit("attack", 0);
+    const cellComponent = wrapper.findComponent(Cell);
 
     expect(wrapper.vm.computerCells).toHaveLength(100);
+    expect(cellComponent.classes()).toContain("cell");
   });
 });

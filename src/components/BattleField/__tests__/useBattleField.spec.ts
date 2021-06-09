@@ -19,6 +19,11 @@ describe("useBattleField", () => {
           setCellAttacked,
         };
       },
+      template: `
+      <div class="flex justify-center w-full">
+        <div class="battleship-grid border-board">
+        </div>
+      </div>`,
     });
 
     await wrapper.vm.$nextTick();

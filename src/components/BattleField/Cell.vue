@@ -20,6 +20,7 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ["attack"],
   setup(props, { emit }) {
     const handleAttack = () => {
       emit("attack", props.cellIndex);

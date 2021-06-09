@@ -35,6 +35,7 @@ jobs:
 
   lint:
     name: Linting 🚨
+    needs: [install_dependencies]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -54,8 +55,31 @@ jobs:
       - name: Run linting
         run: npm run lint:script
 
+  unit_test:
+    name: Unit Test ✅
+    needs: [install_dependencies]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.node_version }}
+
+      - id: npm-cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Run coverage
+        run: npm run coverage
+
   build:
     name: Build 👷‍♂️
+    needs: [lint, unit_test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
