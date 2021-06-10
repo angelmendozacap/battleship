@@ -4,6 +4,8 @@
 
 Game link: https://battleship.alfredomen.com/
 
+![Demo live gif](https://user-images.githubusercontent.com/47567418/121454956-4fa69b80-c969-11eb-96f4-9a816883824f.gif)
+
 ## Stack
 
 - Vue 3 (with [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html))
