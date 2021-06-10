@@ -4,7 +4,7 @@ import BaseCheckbox from "../BaseCheckbox.vue";
 describe("BaseCheckbox", () => {
   it("should render input", () => {
     const wrapper = mount(BaseCheckbox, {
-      props: { label: "Label", modelValue: "Value" },
+      props: { label: "Label", modelValue: true },
     });
 
     const inputID = wrapper.find<HTMLInputElement>("input").element.id;
@@ -16,7 +16,7 @@ describe("BaseCheckbox", () => {
 
   it("should render input with error", () => {
     const wrapper = mount(BaseCheckbox, {
-      props: { label: "Label", modelValue: "Value", error: "Error" },
+      props: { label: "Label", modelValue: true, error: "Error" },
     });
 
     expect(wrapper.html()).toContain("Label");

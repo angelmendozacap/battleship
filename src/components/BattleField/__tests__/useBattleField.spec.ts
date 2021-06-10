@@ -45,6 +45,51 @@ describe("useBattleField", () => {
     });
   });
 
+  it("should setCellAttacked and wins", async () => {
+    const wrapper = mount({
+      setup() {
+        const { config, setAttempts } = useConfig();
+        const { cells, setCellAttacked } = useBattleField();
+
+        return {
+          config,
+          setAttempts,
+          cells,
+          setCellAttacked,
+        };
+      },
+      template: `
+      <div class="flex justify-center w-full">
+        <div class="battleship-grid border-board">
+        </div>
+      </div>`,
+    });
+
+    await wrapper.vm.$nextTick();
+
+    wrapper.vm.setAttempts(100);
+
+    const shipNamesArray = [
+      ShipNames.BATTLESHIP,
+      ShipNames.CRUISER,
+      ShipNames.DESTROYER,
+      ShipNames.SUBMARINE,
+    ];
+
+    shipNamesArray.forEach((shipName) => {
+      const cellShipType = wrapper.vm.cells.filter(
+        (cell) => cell.shipName === shipName && !cell.boom
+      );
+
+      cellShipType.forEach((cell) => {
+        const cellIndex = wrapper.vm.cells.indexOf(cell);
+        console.log(cellIndex);
+        wrapper.vm.setCellAttacked(cellIndex);
+        expect(wrapper.vm.cells[cellIndex].boom).toBeTruthy();
+      });
+    });
+  });
+
   it("should setCellAttacked with no attempts", async () => {
     const wrapper = mount({
       setup() {
