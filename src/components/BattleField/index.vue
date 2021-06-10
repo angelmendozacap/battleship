@@ -1,13 +1,48 @@
 <template>
-  <div class="flex justify-center w-full">
-    <div class="battleship-grid border-board">
-      <Cell
-        v-for="(cell, index) in computerCells"
-        :key="index"
-        :cell="cell"
-        :cell-index="index"
-        @attack="setCellAttacked"
-      />
+  <div
+    class="lg:w-full lg:flex lg:flex-row lg:justify-between xl:justify-around"
+  >
+    <div
+      class="
+        px-2
+        py-1
+        md:px-6 md:py-2
+        bg-blue-300
+        rounded
+        shadow-inner
+        mb-6
+        lg:mb-0
+      "
+    >
+      <div class="battleship-grid border-board">
+        <Cell
+          v-for="(cell, index) in computerCells"
+          :key="index"
+          :cell="cell"
+          :cell-index="index"
+          @attack="setCellAttacked"
+        />
+      </div>
+    </div>
+    <div class="rounded text-lg lg:text-2xl">
+      <p class="lg:text-center mb-6">
+        Intentos restantes
+        <span class="block font-bold text-white mt-1">{{
+          config.numberOfAttempts === Infinity
+            ? "Ilimitados"
+            : config.numberOfAttempts
+        }}</span>
+      </p>
+      <p class="lg:text-center">
+        Estado del combate
+        <span
+          class="block font-bold mt-1"
+          :class="[
+            sunkenShipsInfo.destroyed ? 'text-red-400' : 'text-yellow-300',
+          ]"
+          >{{ sunkenShipsInfo.info || "Empezando" }}</span
+        >
+      </p>
     </div>
   </div>
 </template>
@@ -27,7 +62,11 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter();
-    const { cells: computerCells, setCellAttacked } = useBattleField();
+    const {
+      cells: computerCells,
+      setCellAttacked,
+      sunkenShipsInfo,
+    } = useBattleField();
     const { config } = useConfig();
     const { game } = useGame();
     watchEffect(() => {
@@ -36,6 +75,7 @@ export default defineComponent({
 
     return {
       config,
+      sunkenShipsInfo,
       computerCells,
       setCellAttacked,
     };

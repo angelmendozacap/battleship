@@ -60,7 +60,7 @@ export function useBattleField() {
     if (!isTaken && !isAtRightEdge && !isAtLeftEdge)
       current.forEach((index) => {
         cells.value[randomStart + index].taken = true;
-        cells.value[randomStart + index].shipName = ship.name.toLowerCase();
+        cells.value[randomStart + index].ship = ship;
       });
     else generateShip(ship);
   }
@@ -72,18 +72,19 @@ export function useBattleField() {
 
   function setCellAttacked(index: number) {
     const cell = cells.value[index];
-    const { taken, shipName } = cell;
+    const { taken, ship } = cell;
 
     const leftAttempts = config.numberOfAttempts - 1;
     setAttempts(leftAttempts);
     if (config.numberOfAttempts > 0) {
       if (taken) {
-        if (shipName === ShipNames.DESTROYER) destroyerCount.value++;
-        if (shipName === ShipNames.SUBMARINE) submarineCount.value++;
-        if (shipName === ShipNames.CRUISER) cruiserCount.value++;
-        if (shipName === ShipNames.BATTLESHIP) battleshipCount.value++;
+        if (ship?.name === ShipNames.DESTROYER) destroyerCount.value++;
+        if (ship?.name === ShipNames.SUBMARINE) submarineCount.value++;
+        if (ship?.name === ShipNames.CRUISER) cruiserCount.value++;
+        if (ship?.name === ShipNames.BATTLESHIP) battleshipCount.value++;
 
         cell.boom = true;
+        checkSunkenShips(cell);
       } else {
         cell.miss = true;
       }
@@ -91,6 +92,30 @@ export function useBattleField() {
       checkForWins();
     } else {
       gameOver(false);
+    }
+  }
+
+  const sunkenShipsInfo = ref({
+    info: "",
+    destroyed: false,
+  });
+
+  function checkSunkenShips(cell: Cell) {
+    if (cell.taken && cell.ship) {
+      sunkenShipsInfo.value.info = `${cell.ship?.name
+        .toString()
+        .toUpperCase()} atacado`;
+
+      const sunkenShips = cells.value.filter(
+        (c) => c.ship?.name === cell.ship?.name && c.boom
+      );
+      const size = cell.ship?.size ?? 1;
+      if (sunkenShips.length % size === 0) {
+        sunkenShipsInfo.value.destroyed = true;
+        sunkenShipsInfo.value.info = `${cell.ship?.name
+          .toString()
+          .toUpperCase()} destruido`;
+      }
     }
   }
 
@@ -153,6 +178,7 @@ export function useBattleField() {
   return {
     cells,
     boardSize,
+    sunkenShipsInfo,
     createBoard,
     generateShip,
     setCellAttacked,

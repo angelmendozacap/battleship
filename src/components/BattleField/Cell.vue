@@ -1,6 +1,9 @@
 <template>
   <div v-if="cell.miss" class="cell miss"></div>
-  <div v-else-if="cell.shipName && cell.boom" class="cell boom relative"></div>
+  <div
+    v-else-if="cell.ship?.name && cell.boom"
+    class="cell boom relative"
+  ></div>
   <div v-else class="cell" @click="handleAttack"></div>
 </template>
 

@@ -1,8 +1,14 @@
 <template>
-  <div class="min-h-screen flex justify-center items-center">
-    <div class="px-2 py-1 md:px-6 md:py-2 bg-blue-300 rounded shadow-inner">
-      <BattleField />
-    </div>
+  <div
+    class="
+      min-h-screen
+      flex
+      justify-center
+      items-center
+      lg:container lg:mx-auto
+    "
+  >
+    <BattleField />
   </div>
 </template>
 

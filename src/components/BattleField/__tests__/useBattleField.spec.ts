@@ -37,7 +37,7 @@ describe("useBattleField", () => {
 
     shipNamesArray.forEach((shipName) => {
       const firstIndexTaken = wrapper.vm.cells.findIndex(
-        (cell) => cell.shipName === shipName
+        (cell) => cell.ship?.name === shipName
       );
       wrapper.vm.setCellAttacked(firstIndexTaken);
 
@@ -78,12 +78,11 @@ describe("useBattleField", () => {
 
     shipNamesArray.forEach((shipName) => {
       const cellShipType = wrapper.vm.cells.filter(
-        (cell) => cell.shipName === shipName && !cell.boom
+        (cell) => cell.ship?.name === shipName && !cell.boom
       );
 
       cellShipType.forEach((cell) => {
         const cellIndex = wrapper.vm.cells.indexOf(cell);
-        console.log(cellIndex);
         wrapper.vm.setCellAttacked(cellIndex);
         expect(wrapper.vm.cells[cellIndex].boom).toBeTruthy();
       });

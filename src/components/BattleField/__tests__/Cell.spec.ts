@@ -1,3 +1,4 @@
+import { ShipNames } from "@/types/Ship";
 import { mount } from "@vue/test-utils";
 import Cell from "../Cell.vue";
 
@@ -9,7 +10,6 @@ describe("Cell", () => {
           taken: false,
           boom: false,
           miss: false,
-          shipName: "",
         },
         cellIndex: 10,
       },
@@ -26,10 +26,19 @@ describe("Cell", () => {
     const wrapper = mount(Cell, {
       props: {
         cell: {
-          taken: false,
+          taken: true,
           boom: true,
           miss: false,
-          shipName: "Submarine",
+          ship: {
+            id: 4,
+            name: ShipNames.BATTLESHIP,
+            size: 4,
+            directions: {
+              horizontal: [0, 1, 2, 3],
+              vertical: [0, 10, 10 * 2, 10 * 3],
+            },
+            count: 1,
+          },
         },
         cellIndex: 10,
       },
